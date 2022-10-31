@@ -1,0 +1,44 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Node CI
+
+on:
+  push:
+    branches: [main]
+    tags: [v*]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build
+        if: github.ref_name == 'main'
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          build-args: |
+            OCI_API_CONFIG=${{secrets.OCI_API_CONFIG}}
+            OCI_API_KEY=${{secrets.OCI_API_KEY}}
+            OCI_API_KEY_PUB=${{secrets.OCI_API_KEY_PUB}}
+          platforms: linux/arm64,linux/amd64
+          push: true
+          tags: ghcr.io/${{github.repository}}:main
