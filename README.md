@@ -1,3 +1,3 @@
 # oci-cf-ip-rule
 
-DO NOT make this reopo public.
+A worker fetching Cloudflare IPs (intervaly) and update them to the specified OCI Network Security Rule

@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oci-cf-ip-rule-depl
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: oci-cf-ip-rule
+  template:
+    metadata:
+      labels:
+        app: oci-cf-ip-rule
+    spec:
+      containers:
+        - name: oci-cf-ip-rule
+          image: ghcr.io/powerkernel/oci-cf-ip-rule:main
+          envFrom: # create your env config
+            - configMapRef:
+              name: env
+          volumeMounts: # create your oci-api-auth config map
+            - name: oci-api-auth
+              mountPath: /app/.oci/oci_api_key.pem
+              subPath: oci_api_key.pem
+            - name: oci-api-auth
+              mountPath: /app/.oci/oci_api_key_public.pem
+              subPath: oci_api_key_public.pem
+            - name: oci-api-auth
+              mountPath: /app/.oci/config
+              subPath: config
