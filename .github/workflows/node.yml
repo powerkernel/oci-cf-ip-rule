@@ -30,15 +30,20 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build
+      - name: Build main
         if: github.ref_name == 'main'
         uses: docker/build-push-action@v3
         with:
           context: .
-          build-args: |
-            OCI_API_CONFIG=${{secrets.OCI_API_CONFIG}}
-            OCI_API_KEY=${{secrets.OCI_API_KEY}}
-            OCI_API_KEY_PUB=${{secrets.OCI_API_KEY_PUB}}
           platforms: linux/arm64,linux/amd64
           push: true
           tags: ghcr.io/${{github.repository}}:main
+
+      - name: Build version
+        if: github.ref_name != 'main'
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          platforms: linux/arm64,linux/amd64
+          push: true
+          tags: ghcr.io/${{github.repository}}:${{github.ref_name}},ghcr.io/${{github.repository}}:latest
