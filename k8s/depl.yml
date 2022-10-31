@@ -13,11 +13,6 @@ spec:
       labels:
         app: oci-cf-ip-rule
     spec:
-      securityContext:
-        fsGroup: 999
-        runAsUser: 999
-        runAsGroup: 999
-        runAsNonRoot: true
       containers:
         - name: oci-cf-ip-rule
           image: ghcr.io/powerkernel/oci-cf-ip-rule:main
