@@ -13,6 +13,7 @@ spec:
           containers:
             - name: oci-cf-ip-rule
               image: ghcr.io/powerkernel/oci-cf-ip-rule:main
+              imagePullPolicy: Always
               envFrom: # create your env config map
                 - configMapRef:
                     name: oci-cf-ip-rule-env
