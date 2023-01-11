@@ -80,6 +80,7 @@ const execute = async () => {
     }
   } catch (error) {
     console.log('Failed with error  ' + error);
+    process.exit(1);
   }
   console.timeEnd('Updating Cloudflare IPs');
 };
