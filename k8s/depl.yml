@@ -1,38 +1,35 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: batch/v1
+kind: CronJob
 metadata:
-  name: oci-cf-ip-rule-depl
+  name: oci-cf-ip-rule
   namespace: default
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: oci-cf-ip-rule
-  template:
-    metadata:
-      labels:
-        app: oci-cf-ip-rule
+  schedule: '* * * * *'
+  jobTemplate:
     spec:
-      containers:
-        - name: oci-cf-ip-rule
-          image: ghcr.io/powerkernel/oci-cf-ip-rule:main
-          envFrom: # create your env config map
-            - configMapRef:
-                name: oci-cf-ip-rule-env
-          volumeMounts:
-            - name: oci-api-key # create your oci-api-key secert
-              mountPath: /app/.oci/oci_api_key.pem
-              subPath: oci_api_key.pem
-            - name: oci-api-auth # create your oci-api-auth config map
-              mountPath: /app/.oci/oci_api_key_public.pem
-              subPath: oci_api_key_public.pem
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+            - name: oci-cf-ip-rule
+              image: ghcr.io/powerkernel/oci-cf-ip-rule:main
+              envFrom: # create your env config map
+                - configMapRef:
+                    name: oci-cf-ip-rule-env
+              volumeMounts:
+                - name: oci-api-key # create your oci-api-key secert
+                  mountPath: /app/.oci/oci_api_key.pem
+                  subPath: oci_api_key.pem
+                - name: oci-api-auth # create your oci-api-auth config map
+                  mountPath: /app/.oci/oci_api_key_public.pem
+                  subPath: oci_api_key_public.pem
+                - name: oci-api-auth
+                  mountPath: /app/.oci/config
+                  subPath: config
+          volumes:
             - name: oci-api-auth
-              mountPath: /app/.oci/config
-              subPath: config
-      volumes:
-        - name: oci-api-auth
-          configMap:
-            name: oci-api-auth
-        - name: oci-api-key
-          secret:
-            secretName: oci-api-key-cred
+              configMap:
+                name: oci-api-auth
+            - name: oci-api-key
+              secret:
+                secretName: oci-api-key-cred
