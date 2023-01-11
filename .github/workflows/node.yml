@@ -38,6 +38,8 @@ jobs:
           platforms: linux/arm64,linux/amd64
           push: true
           tags: ghcr.io/${{github.repository}}:main
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
       - name: Build version
         if: github.ref_name != 'main'
@@ -47,3 +49,5 @@ jobs:
           platforms: linux/arm64,linux/amd64
           push: true
           tags: ghcr.io/${{github.repository}}:${{github.ref_name}},ghcr.io/${{github.repository}}:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
