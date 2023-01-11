@@ -1,7 +1,7 @@
 {
   "name": "oci-cf-ip-rule",
   "version": "1.0.0",
-  "description": "",
+  "description": "A job that updates the IP rules for a security list to allow access from Cloudflare's IP ranges.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
@@ -10,10 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.1.3",
-    "dotenv": "^16.0.3",
-    "lodash": "^4.17.21",
-    "oci-common": "^2.50.1",
-    "oci-core": "^2.50.1"
+    "axios": "1.2.2",
+    "dotenv": "16.0.3",
+    "lodash": "4.17.21",
+    "oci-common": "2.50.1",
+    "oci-core": "2.50.1"
   }
 }

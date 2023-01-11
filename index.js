@@ -144,7 +144,4 @@ const remove = async (provider, ids) => {
 
 (async () => {
   await execute();
-  setInterval(async () => {
-    await execute();
-  }, process.env.INTERVAL || 86_400_000);
 })();
