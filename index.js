@@ -144,4 +144,5 @@ const remove = async (provider, ids) => {
 
 (async () => {
   await execute();
+  process.exit();
 })();
