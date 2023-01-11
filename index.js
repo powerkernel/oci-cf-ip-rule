@@ -143,6 +143,7 @@ const remove = async (provider, ids) => {
 };
 
 (async () => {
+  console.log(`Starting ${process.env.npm_package_name} v${process.env.npm_package_version}`);
   await execute();
   process.exit();
 })();
