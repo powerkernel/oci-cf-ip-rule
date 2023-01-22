@@ -15,7 +15,7 @@
   "author": "Harry Tang <harry@powerkernel.com>",
   "license": "ISC",
   "dependencies": {
-    "axios": "1.2.2",
+    "axios": "1.2.3",
     "dotenv": "16.0.3",
     "lodash": "4.17.21",
     "oci-common": "2.50.1",
