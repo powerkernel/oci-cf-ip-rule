@@ -4,7 +4,7 @@ const axios = require('axios');
 const common = require('oci-common');
 const _ = require('lodash');
 
-const configurationFilePath = process.env.OCI_CONFIG_FILE || '~/.oci/config';
+const configurationFilePath = process.env.OCI_CONFIG_FILE || '/app/.oci/config';
 const configProfile = process.env.OCI_CONFIG_PROFILE || 'DEFAULT';
 const provider = new common.ConfigFileAuthenticationDetailsProvider(configurationFilePath, configProfile);
 const networkSecurityGroupId = process.env.NETWORK_SECURITY_GROUP_ID;

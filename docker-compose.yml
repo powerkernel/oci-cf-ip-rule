@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  oci-cf-ip:
+    container_name: oci-cf-ip
+    build:
+      context: .
+    image: ghcr.io/powerkernel/oci-cf-ip-rule:main
+    volumes:
+      - ./.oci:/app/.oci
+    env_file: .env
