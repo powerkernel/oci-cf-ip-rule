@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/powerkernel/oci-cf-ip-rule/compare/v1.0.2...v1.1.0) (2023-02-05)
+
+
+### Features
+
+* adds IPv6 toggle ([26fefe3](https://github.com/powerkernel/oci-cf-ip-rule/commit/26fefe36a191356e5614a1a9638ef6239383e9c0))
+
+
+### Bug Fixes
+
+* **deps:** update dependency axios to v1.2.5 ([0e483df](https://github.com/powerkernel/oci-cf-ip-rule/commit/0e483df8a76a5af73ba80eebb506d044789eacf5))
+* **deps:** update dependency axios to v1.3.2 ([9e434da](https://github.com/powerkernel/oci-cf-ip-rule/commit/9e434da0f5e4c1e803add0f2b4445ebfa3799367))
+* **deps:** update dependency oci-common to v2.50.4 ([9392a72](https://github.com/powerkernel/oci-cf-ip-rule/commit/9392a7200ea5161615556dedd504df693e0447ee))
+* **deps:** update dependency oci-core to v2.50.4 ([1fe9342](https://github.com/powerkernel/oci-cf-ip-rule/commit/1fe93422d697fa6f2f74ee3cd54ad2d3223584b5))
+
 ### [1.0.2](https://github.com/powerkernel/oci-cf-ip-rule/compare/v1.0.1...v1.0.2) (2023-01-25)
 
 
