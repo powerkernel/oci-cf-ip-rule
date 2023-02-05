@@ -16,7 +16,8 @@ const execute = async () => {
     const baseUrl = process.env.CF_API_ENDPOINT || 'https://api.cloudflare.com/client/v4';
     const response = await axios.get(`${baseUrl}/ips`);
     const { ipv4_cidrs, ipv6_cidrs } = response.data.result;
-    const cidrs = [...ipv4_cidrs, ...ipv6_cidrs];
+
+    const cidrs = process.env.IPV6_ENABLED ? [...ipv4_cidrs, ...ipv6_cidrs] : [...ipv4_cidrs];
 
     // Get current cidr list
     const client = new core.VirtualNetworkClient({ authenticationDetailsProvider: provider });

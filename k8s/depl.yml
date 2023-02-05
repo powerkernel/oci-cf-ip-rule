@@ -17,7 +17,7 @@ spec:
             runAsNonRoot: true
           containers:
             - name: oci-cf-ip-rule
-              image: ghcr.io/powerkernel/oci-cf-ip-rule:v1.0.1
+              image: ghcr.io/powerkernel/oci-cf-ip-rule:v1.0.3
               imagePullPolicy: Always
               envFrom: # create your env config map
                 - configMapRef:
