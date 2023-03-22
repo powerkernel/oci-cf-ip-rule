@@ -20,6 +20,6 @@
     "dotenv": "16.0.3",
     "lodash": "4.17.21",
     "oci-common": "2.55.0",
-    "oci-core": "2.50.4"
+    "oci-core": "2.55.0"
   }
 }
