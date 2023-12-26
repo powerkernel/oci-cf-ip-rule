@@ -1,6 +1,6 @@
 {
   "name": "oci-cf-ip-rule",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A job that updates the IP rules for a security list to allow access from Cloudflare's IP ranges.",
   "main": "index.js",
   "scripts": {
